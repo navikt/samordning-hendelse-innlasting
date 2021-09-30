@@ -27,7 +27,7 @@
         <kafka.version>2.0.0</kafka.version>
         <confluent.version>5.0.0</confluent.version>
         <nais-support.version>b60ddc2</nais-support.version>
-        <samordning-schema.version>9d489ef</samordning-schema.version>
+        <samordning-schema.version>28c0870</samordning-schema.version>
 
         <mainClass>no.nav.samordning.innlasting.Application</mainClass>
     </properties>
