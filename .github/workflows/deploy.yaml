@@ -35,7 +35,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t $(cat .docker_image):$(cat .docker_tag) .
-          echo "::set-env name=IMAGE::$(cat .docker_image):$(cat .docker_tag)"
+          echo "IMAGE=$(cat .docker_image):$(cat .docker_tag)" >> $GITHUB_ENV
       - name: Push Docker image
         run: "docker push $(cat .docker_image):$(cat .docker_tag)"
 
@@ -51,12 +51,12 @@ jobs:
           VARS: nais-dev-vars.yaml
 
       # Deploy
-      - name: Deploy to prod-fss
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-fss
-          RESOURCE: nais.yaml
-          IMAGE: ${{ env.IMAGE }}
-          TEAM: pensjonsamhandling
-          VARS: nais-prod-vars.yaml
+      #- name: Deploy to prod-fss
+      #  uses: nais/deploy/actions/deploy@v1
+      # env:
+      #   APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+      #    CLUSTER: prod-fss
+      #    RESOURCE: nais.yaml
+      #    IMAGE: ${{ env.IMAGE }}
+      #    TEAM: pensjonsamhandling
+      #    VARS: nais-prod-vars.yaml
